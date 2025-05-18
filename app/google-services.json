@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "987990469879",
+    "project_id": "fir-homework-a3edb",
+    "storage_bucket": "fir-homework-a3edb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987990469879:android:4151543e49492bf86737f2",
+        "android_client_info": {
+          "package_name": "com.learning.firebasehw"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbHDTGvvX47L8IA5AYs7dPQmiqb1cLAHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
