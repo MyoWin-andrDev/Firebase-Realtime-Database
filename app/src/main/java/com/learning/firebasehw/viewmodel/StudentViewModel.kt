@@ -18,24 +18,49 @@ class StudentViewModel : ViewModel(){
 
     suspend fun addStudent(student : StudentModel){
         clearData()
-        val result = studentRepository.addStudent(student)
-        result.onSuccess {
+        studentRepository.addStudent(student)
+            .onSuccess {
             _operationStatus.postValue(it)
-        }
-        result.onFailure {
+            }
+            .onFailure {
             _operationStatus.postValue(it.toString())
-        }
+            }
     }
+
     suspend fun updateStudent(student : StudentModel){
         clearData()
-        val result = studentRepository.updateStudent(student)
-        result.onSuccess {
+        studentRepository.updateStudent(student)
+            .onSuccess {
             _operationStatus.postValue(it)
-        }
-        result.onFailure {
+            }
+            .onFailure {
             _operationStatus.postValue(it.toString())
-        }
+            }
     }
+
+    suspend fun deleteStudent(student: StudentModel){
+        clearData()
+        studentRepository.deleteStudent(student)
+            .onSuccess {
+                _operationStatus.postValue(it)
+            }
+            .onFailure {
+                _operationStatus.postValue(it.toString())
+            }
+
+    }
+    suspend fun getAllStudent(){
+        clearData()
+        studentRepository.getAllStudents()
+            .onSuccess {
+                _studentList.postValue(it)
+            }
+            .onFailure {
+                _operationStatus.postValue(it.toString())
+
+            }
+    }
+
     fun clearData(){
         _operationStatus.postValue(null)
     }
