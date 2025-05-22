@@ -1,5 +1,8 @@
 package com.learning.firebasehw.util
 
+import android.content.Context
+import android.widget.Toast
+import com.google.android.gms.common.api.Status
 import com.learning.firebasehw.model.StudentModel
 
 const val STUDENT_REF = "students"
@@ -25,3 +28,8 @@ fun StudentModel.operationFailedMessage(operation: String, e: Exception) =
 
 fun loadOperationFailed(operation : String ,e : Exception) =
     "Failed to $operation Student Data. ${e.message}"
+
+//Toast Message for Extension Function
+fun Context.showStatusToast(status: String){
+    Toast.makeText(this, status, Toast.LENGTH_SHORT).show()
+}

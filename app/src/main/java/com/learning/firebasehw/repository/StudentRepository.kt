@@ -1,5 +1,6 @@
 package com.learning.firebasehw.repository
 
+import android.util.Log
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -41,12 +42,12 @@ class StudentRepository {
         Result.failure<String>(Exception(student.operationFailedMessage(OP_DELETE,e)))
     }
 
-    fun getAllStudents () : Result<List<StudentModel>> = try {
+    suspend fun getAllStudents () : Result<List<StudentModel>> = try {
         val studentList = ArrayList<StudentModel>()
         studentRef.addValueEventListener(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 snapshot.children.forEach {
-                    it.getValue(StudentModel::class.java)?.let{ studentList.add(it) }
+                    it.getValue(StudentModel::class.java)?.let{ studentList.add(it)}
                 }
             }
             override fun onCancelled(error: DatabaseError) {}

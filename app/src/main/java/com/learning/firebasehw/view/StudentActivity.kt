@@ -2,17 +2,10 @@ package com.learning.firebasehw.view
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
-import com.learning.firebasehw.R
 import com.learning.firebasehw.adapter.StudentAdapter
 import com.learning.firebasehw.databinding.ActivityStudentBinding
 import com.learning.firebasehw.viewmodel.StudentViewModel
@@ -53,6 +46,7 @@ class StudentActivity : AppCompatActivity() {
                 onDeleteClick = {},
                 onItemClick = {}
             )
+            Log.d("Data", it.toString())
         }
     }
 }
