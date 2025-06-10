@@ -2,6 +2,7 @@ package com.learning.firebasehw.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -25,7 +26,7 @@ class StudentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStudentBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        loadStudents()
         setupAdapter()
         setupViews()
         observeData()
@@ -54,9 +55,11 @@ class StudentActivity : AppCompatActivity() {
     private fun observeData() {
         viewModel.studentList.observe(this) { either ->
             either.fold(
-                ifLeft = {errorMsg -> showToast(errorMsg) },
+                ifLeft = {errorMsg -> showToast(errorMsg)
+                         Log.d("Error", errorMsg)},
                 ifRight = { students ->
                     adapter.refreshStudent(students)
+                    Log.d("StudentList", students.toString())
                 }
             )
         }

@@ -5,7 +5,7 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class StudentModel(
-    val studentId : String = "",
+    val studentId : Int = 0,
     val studentName : String = "",
     val studentGrade : String = "",
     val studentRoom : String = "",

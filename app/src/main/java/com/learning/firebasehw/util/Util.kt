@@ -3,15 +3,11 @@ package com.learning.firebasehw.util
 import android.content.Context
 import android.widget.Toast
 import com.google.android.gms.common.api.Status
+import com.google.android.material.textfield.TextInputEditText
 import com.learning.firebasehw.model.StudentModel
+import java.util.concurrent.Executor
 
 const val STUDENT_REF = "students"
-
-// Operation types for the error message
-const val OP_ADD = "add"
-const val OP_UPDATE = "update"
-const val OP_DELETE = "delete"
-const val OP_LOAD = "load"
 
 // Extension functions for Result messages
 fun StudentModel.addSuccessMessage() =
@@ -29,7 +25,23 @@ fun StudentModel.operationFailedMessage(operation: String, e: Exception) =
 fun loadOperationFailed(operation : String ,e : Exception) =
     "Failed to $operation Student Data. ${e.message}"
 
+fun getIdFailed(operation: String, e : Exception) =
+    "Failed to $operation student latest ID. ${e.message} "
+
 //Toast Message for Extension Function
 fun Context.showToast(status: String){
     Toast.makeText(this, status, Toast.LENGTH_SHORT).show()
 }
+
+fun TextInputEditText.validateNotEmpty(errorMessage: String): Boolean {
+    return if (text.toString().trim().isEmpty()) {
+        error = errorMessage
+        false
+    } else {
+        error = null
+        true
+    }
+}
+
+fun generateNextStudentId(latestId: Int ): Int =
+    latestId.inc()

@@ -17,6 +17,9 @@ class StudentViewModel : ViewModel(){
     private val _operationStatus = MutableLiveData<Either<String, String>>()
     val operationStatus : LiveData<Either<String, String>> = _operationStatus
 
+    private val _getLatestId = MutableLiveData<Either<String, Int>>()
+    val getLatestId : LiveData<Either<String, Int>> = _getLatestId
+
     suspend fun addStudent(student : StudentModel){
        // clearData()
         studentRepository.addStudent(student)
@@ -60,7 +63,15 @@ class StudentViewModel : ViewModel(){
 
             }
     }
-
+    suspend fun getLatestId(){
+        studentRepository.getLatestStudentId()
+            .onSuccess { id->
+                _getLatestId.postValue(Either.Right(id))
+            }
+            .onFailure { throwable ->
+                _getLatestId.postValue(Either.Left(throwable.toString()))
+            }
+    }
 //    fun clearData(){
 //        _operationStatus.postValue(null)
 //    }

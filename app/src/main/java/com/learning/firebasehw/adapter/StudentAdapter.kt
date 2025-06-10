@@ -13,16 +13,16 @@ class StudentAdapter (private var studentList :List<StudentModel>, private val o
     inner class  StudentViewHolder(val binding : ListItemStudentBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(position: Int) = with(binding){
             val student = studentList[position]
-            tvStudentId.text = student.id.toString()
-            tvName.text = student.name
-            tvGrade.text = student.grade
-            tvRoomNo.text = student.room
+            tvStudentId.text = student.studentId.toString()
+            tvName.text = student.studentName
+            tvGrade.text = student.studentGrade
+            tvRoomNo.text = student.studentRoom
 
             ivGender.setImageResource(
-                when(student.gender){
+                when(student.studentGender){
                     1 -> R.drawable.male
                     0 -> R.drawable.femenine
-                    else -> return@with
+                    else -> return
                 }
             )
             btnDelete.setOnClickListener {

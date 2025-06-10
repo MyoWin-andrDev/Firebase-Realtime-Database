@@ -21,13 +21,12 @@ object Constants {
         const val FATHER_NAME = "Father's Name"
     }
 
-    object Messages {
-        const val RECORD_ADDED = "%s's Record Added"
-        const val RECORD_UPDATED = "%s's Record Updated"
-        const val ADD_FAILED = "Could not add student"
-        const val UPDATE_FAILED = "Could not update student"
-        const val DELETE_SUCCESS = "%s's records deleted successfully"
-        const val GENERAL_ERROR = "Something went wrong"
+    object Operation {
+        const val OP_ADD = "add"
+        const val OP_UPDATE = "update"
+        const val OP_DELETE = "delete"
+        const val OP_LOAD = "load"
+        const val OP_GET = "get"
     }
 
     object Titles {
