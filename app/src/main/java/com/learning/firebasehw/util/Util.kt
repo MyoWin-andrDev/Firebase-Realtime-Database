@@ -30,6 +30,6 @@ fun loadOperationFailed(operation : String ,e : Exception) =
     "Failed to $operation Student Data. ${e.message}"
 
 //Toast Message for Extension Function
-fun Context.showStatusToast(status: String){
+fun Context.showToast(status: String){
     Toast.makeText(this, status, Toast.LENGTH_SHORT).show()
 }

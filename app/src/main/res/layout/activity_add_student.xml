@@ -5,101 +5,95 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.EditStudentActivity">
+    tools:context=".view.AddStudentActivity">
+
+    <Toolbar
+        android:id="@+id/tbHome"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:title="Add Student"
+        android:titleTextColor="?attr/colorOnPrimary"
+        android:navigationIcon="@drawable/ic_back"
+        android:background="?attr/colorPrimary"/>
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/tbHome">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp">
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Add Student"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint="Name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvTitle">
+                android:layout_marginTop="16dp"
+                app:counterMaxLength="30"
+                android:hint="Name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:maxLength="30" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/gradeInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint="Grade"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/nameInputLayout">
+                android:layout_marginTop="16dp"
+                app:counterMaxLength="30"
+                android:hint="Grade">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etGrade"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:maxLength="30" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/roomInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:hint="Room No"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/gradeInputLayout">
+                android:layout_marginTop="16dp"
+                app:counterMaxLength="30"
+                android:hint="Room No">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etRoomNo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:maxLength="30" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/tvGenderLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Gender"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/roomInputLayout" />
+                android:layout_marginTop="16dp"
+                android:text="Gender" />
 
             <RadioGroup
                 android:id="@+id/rgGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvGenderLabel">
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/rbMale"
@@ -121,37 +115,30 @@
                 android:layout_height="wrap_content"
                 android:text="Gender is required"
                 android:textColor="?attr/colorError"
-                app:layout_constraintStart_toStartOf="@id/tvGenderLabel"
-                app:layout_constraintTop_toBottomOf="@id/rgGender"
                 android:visibility="gone"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fatherNameInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="8dp"
-                android:hint="Father's Name"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvGenderError">
+                android:layout_marginTop="16dp"
+                android:hint="Father's Name">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etFatherName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:maxLength="30" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnSave"
+                android:id="@+id/btSave"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fatherNameInputLayout" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+                android:layout_marginTop="32dp"
+                android:text="Save" />
 
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
