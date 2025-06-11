@@ -42,6 +42,3 @@ fun TextInputEditText.validateNotEmpty(errorMessage: String): Boolean {
         true
     }
 }
-
-fun generateNextStudentId(latestId: Int ): Int =
-    latestId.inc()
