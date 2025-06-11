@@ -50,7 +50,7 @@ class StudentRepository {
         Result.failure(Exception(loadOperationFailed(OP_LOAD, e)))
     }
     suspend fun getLatestStudentId(): Result<Int> = try {
-        val id = getAllStudents().getOrNull()?.maxByOrNull { it.studentId.inc() }?.studentId ?: 1
+        val id = getAllStudents().getOrNull()?.maxByOrNull { it.studentId.inc() }?.studentId ?: 0
         Result.success(id + 1)
     }
     catch (e : Exception){
