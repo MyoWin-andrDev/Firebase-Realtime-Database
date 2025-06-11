@@ -21,7 +21,6 @@ class StudentViewModel : ViewModel(){
     val getLatestId : LiveData<Either<String, Int>> = _getLatestId
 
     suspend fun addStudent(student : StudentModel){
-       // clearData()
         studentRepository.addStudent(student)
             .onSuccess { success ->
             _operationStatus.postValue(Either.Right(success))
@@ -32,7 +31,6 @@ class StudentViewModel : ViewModel(){
     }
 
     suspend fun updateStudent(student : StudentModel){
-       // clearData()
         studentRepository.updateStudent(student)
             .onSuccess { success ->
             _operationStatus.postValue(Either.Right(success))
@@ -43,7 +41,6 @@ class StudentViewModel : ViewModel(){
     }
 
     suspend fun deleteStudent(student: StudentModel){
-       // clearData()
         studentRepository.deleteStudent(student)
             .onSuccess { success ->
                 _operationStatus.postValue(Either.Right(success))
@@ -72,7 +69,4 @@ class StudentViewModel : ViewModel(){
                 _getLatestId.postValue(Either.Left(throwable.toString()))
             }
     }
-//    fun clearData(){
-//        _operationStatus.postValue(null)
-//    }
 }

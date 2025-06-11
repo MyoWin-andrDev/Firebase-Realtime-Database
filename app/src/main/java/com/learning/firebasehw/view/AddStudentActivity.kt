@@ -35,7 +35,6 @@ class AddStudentActivity : AppCompatActivity() {
 
     private fun loadStudentData() {
         student = intent.getParcelableExtra<StudentModel>(Constants.STUDENT_DATA)
-        Log.d("student", student.toString())
         binding.tbHome.title = if (student != null) Constants.Titles.EDIT_STUDENT else Constants.Titles.ADD_STUDENT
         binding.tbHome.setNavigationOnClickListener { finish() }
         student?.let { populateFields(it) }
@@ -70,7 +69,6 @@ class AddStudentActivity : AppCompatActivity() {
                 ifLeft = { errorMsg -> showToast(errorMsg) },
                 ifRight = {
                     studentId -> latestID = studentId
-                    Log.d("ID", latestID.toString())
                 }
             )
         }
