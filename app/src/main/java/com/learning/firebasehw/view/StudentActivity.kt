@@ -55,11 +55,9 @@ class StudentActivity : AppCompatActivity() {
     private fun observeData() {
         viewModel.studentList.observe(this) { either ->
             either.fold(
-                ifLeft = {errorMsg -> showToast(errorMsg)
-                         Log.d("Error", errorMsg)},
+                ifLeft = {errorMsg -> showToast(errorMsg)},
                 ifRight = { students ->
                     adapter.refreshStudent(students)
-                    Log.d("StudentList", students.toString())
                 }
             )
         }
@@ -69,7 +67,7 @@ class StudentActivity : AppCompatActivity() {
                 ifLeft = { errorMsg -> showToast(errorMsg) },
                 ifRight = {
                     successMsg -> showToast(successMsg)
-                   // loadStudents()
+                    loadStudents()
                 }
             )
         }

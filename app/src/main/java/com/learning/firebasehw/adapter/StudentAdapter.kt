@@ -22,7 +22,7 @@ class StudentAdapter (private var studentList :List<StudentModel>, private val o
                 when(student.studentGender){
                     1 -> R.drawable.male
                     0 -> R.drawable.femenine
-                    else -> return
+                    else -> R.drawable.gender
                 }
             )
             btnDelete.setOnClickListener {
@@ -42,7 +42,7 @@ class StudentAdapter (private var studentList :List<StudentModel>, private val o
 
     @SuppressLint("NotifyDataSetChanged")
     fun refreshStudent(newStudentList : List<StudentModel>){
-        this.studentList = newStudentList
+        this.studentList = newStudentList.toList()
         notifyDataSetChanged()
     }
 

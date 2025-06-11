@@ -36,6 +36,7 @@ class AddStudentActivity : AppCompatActivity() {
 
     private fun loadStudentData() {
         student = intent.getParcelableExtra<StudentModel>(Constants.STUDENT_DATA)
+        Log.d("student", student.toString())
         binding.tbHome.title = if (student != null) Constants.Titles.EDIT_STUDENT else Constants.Titles.ADD_STUDENT
         binding.tbHome.setNavigationOnClickListener { finish() }
         student?.let { populateFields(it) }
@@ -79,7 +80,7 @@ class AddStudentActivity : AppCompatActivity() {
     private fun populateFields(student: StudentModel) {
         with(binding) {
             etName.setText(student.studentName)
-            etGrade.setText(student.studentGender)
+            etGrade.setText(student.studentGrade)
             etRoomNo.setText(student.studentRoom)
             etFatherName.setText(student.studentFatherName)
             when (student.studentGender) {
