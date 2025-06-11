@@ -9,7 +9,6 @@ import androidx.lifecycle.lifecycleScope
 import com.learning.firebasehw.databinding.ActivityAddStudentBinding
 import com.learning.firebasehw.model.StudentModel
 import com.learning.firebasehw.util.Constants
-import com.learning.firebasehw.util.generateNextStudentId
 import com.learning.firebasehw.util.showToast
 import com.learning.firebasehw.util.validateNotEmpty
 import com.learning.firebasehw.viewmodel.StudentViewModel
