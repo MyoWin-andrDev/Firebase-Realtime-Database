@@ -1,7 +1,6 @@
 package com.learning.firebasehw.view
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +8,13 @@ import androidx.lifecycle.lifecycleScope
 import com.learning.firebasehw.databinding.ActivityAddStudentBinding
 import com.learning.firebasehw.model.StudentModel
 import com.learning.firebasehw.util.Constants
+import com.learning.firebasehw.util.Constants.STUDENT_DATA
+import com.learning.firebasehw.util.Constants.Titles.ADD_STUDENT
+import com.learning.firebasehw.util.Constants.Titles.EDIT_STUDENT
+import com.learning.firebasehw.util.Constants.Validation.FATHER_NAME
+import com.learning.firebasehw.util.Constants.Validation.NAME
+import com.learning.firebasehw.util.Constants.Validation.GRADE
+import com.learning.firebasehw.util.Constants.Validation.ROOM_NO
 import com.learning.firebasehw.util.showToast
 import com.learning.firebasehw.util.validateNotEmpty
 import com.learning.firebasehw.viewmodel.StudentViewModel
@@ -34,8 +40,8 @@ class AddStudentActivity : AppCompatActivity() {
     }
 
     private fun loadStudentData() {
-        student = intent.getParcelableExtra<StudentModel>(Constants.STUDENT_DATA)
-        binding.tbHome.title = if (student != null) Constants.Titles.EDIT_STUDENT else Constants.Titles.ADD_STUDENT
+        student = intent.getParcelableExtra<StudentModel>(STUDENT_DATA)
+        binding.tbHome.title = if (student != null) EDIT_STUDENT else ADD_STUDENT
         binding.tbHome.setNavigationOnClickListener { finish() }
         student?.let { populateFields(it) }
     }
@@ -89,10 +95,10 @@ class AddStudentActivity : AppCompatActivity() {
 
     private fun validateFields(): Boolean {
         with(binding) {
-            val isNameValid = etName.validateNotEmpty(Constants.Validation.NAME)
-            val isGradeValid = etGrade.validateNotEmpty(Constants.Validation.GRADE)
-            val isRoomValid = etRoomNo.validateNotEmpty(Constants.Validation.ROOM_NO)
-            val isFatherNameValid = etFatherName.validateNotEmpty(Constants.Validation.FATHER_NAME)
+            val isNameValid = etName.validateNotEmpty(NAME)
+            val isGradeValid = etGrade.validateNotEmpty(GRADE)
+            val isRoomValid = etRoomNo.validateNotEmpty(ROOM_NO)
+            val isFatherNameValid = etFatherName.validateNotEmpty(FATHER_NAME)
 
             val isGenderValid = if (rgGender.checkedRadioButtonId == -1) {
                 tvGenderError.visibility = View.VISIBLE

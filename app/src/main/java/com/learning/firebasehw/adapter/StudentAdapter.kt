@@ -22,7 +22,7 @@ class StudentAdapter (private var studentList :List<StudentModel>, private val o
                 when(student.studentGender){
                     1 -> R.drawable.male
                     0 -> R.drawable.femenine
-                    else -> R.drawable.gender
+                    else -> return
                 }
             )
             btnDelete.setOnClickListener {

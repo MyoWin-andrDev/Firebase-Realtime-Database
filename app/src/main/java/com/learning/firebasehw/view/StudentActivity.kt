@@ -12,6 +12,11 @@ import com.learning.firebasehw.databinding.ActivityStudentBinding
 import com.learning.firebasehw.model.StudentModel
 import com.learning.firebasehw.util.Constants
 import com.learning.firebasehw.util.Constants.Dialog
+import com.learning.firebasehw.util.Constants.Dialog.DELETE_MESSAGE
+import com.learning.firebasehw.util.Constants.Dialog.DELETE_NEGATIVE
+import com.learning.firebasehw.util.Constants.Dialog.DELETE_POSITIVE
+import com.learning.firebasehw.util.Constants.Dialog.DELETE_TITLE
+import com.learning.firebasehw.util.Constants.STUDENT_DATA
 import com.learning.firebasehw.util.showToast
 import com.learning.firebasehw.viewmodel.StudentViewModel
 import kotlinx.coroutines.launch
@@ -79,15 +84,15 @@ class StudentActivity : AppCompatActivity() {
         }
     }
 
-    private fun showDeleteConfirmation(student: StudentModel) = with(Constants){
+    private fun showDeleteConfirmation(student: StudentModel){
         AlertDialog.Builder(this@StudentActivity)
-            .setTitle(Dialog.DELETE_TITLE)
-            .setMessage(Dialog.DELETE_MESSAGE.format(student.studentName))
+            .setTitle(DELETE_TITLE)
+            .setMessage(DELETE_MESSAGE.format(student.studentName))
             .setCancelable(true)
-            .setPositiveButton(Dialog.DELETE_POSITIVE) { _, _ ->
+            .setPositiveButton(DELETE_POSITIVE) { _, _ ->
                 deleteStudent(student)
             }
-            .setNegativeButton(Dialog.DELETE_NEGATIVE, null)
+            .setNegativeButton(DELETE_NEGATIVE, null)
             .show()
     }
 
@@ -103,7 +108,7 @@ class StudentActivity : AppCompatActivity() {
 
     private fun navigateToAddEditActivity(student: StudentModel? = null) {
         Intent(this, AddStudentActivity::class.java).apply {
-            student?.let { putExtra(Constants.STUDENT_DATA, it) }
+            student?.let { putExtra(STUDENT_DATA, it) }
             startActivity(this)
         }
     }
